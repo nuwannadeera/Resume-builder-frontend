@@ -1,0 +1,84 @@
+<div class="container">
+  <ngx-spinner type="ball-scale-multiple"></ngx-spinner>
+  <div class="card bg-light mb-3">
+    <div class="card-header">
+      <div class="row">
+        <div class="col-sm-1" style="margin-top: 5px;">
+          <mat-icon>book</mat-icon>
+        </div>
+        <div class="col-md-10">
+          <h2 style="text-align: left;margin-left: -65px;margin-bottom: 0px">Education</h2>
+        </div>
+        <div class="col-md-1">
+          <button class="btn btn-primary" (click)="addToEducationTable()">Add</button>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <form #educationForm="ngForm">
+        <div class="form-group">
+          <div class="row">
+            <div class="col-md-6">
+              <label style="font-weight: bold;margin-bottom: 3px;margin-top: 5px">Course Name :</label>
+              <input type="text" pattern="[a-zA-Z@.0-9]+$" class="form-control" #edCourse="ngModel" name="course"
+                     placeholder="Enter Course Name"
+                     [(ngModel)]="education.course_name" required="required" minlength="3" maxlength="200">
+              <span style="color: red;font-weight: bold;font-size: 13px"
+                    *ngIf="edCourse.invalid && edCourse.touched && educationList.length == 0">Enter Valid Course Name</span>
+            </div>
+            <div class="col-md-6">
+              <label style="font-weight: bold;margin-bottom: 3px;margin-top: 5px">Institute :</label>
+              <input type="text" class="form-control" pattern="[a-zA-Z0-9@.]+$" #edInstitute="ngModel" name="institute"
+                     placeholder="Enter Institute"
+                     [(ngModel)]="education.institute" required="required" minlength="3" maxlength="200">
+              <span style="color: red;font-weight: bold;font-size: 13px"
+                    *ngIf="edInstitute.invalid && edInstitute.touched && educationList.length == 0">Please Enter Institute</span>
+            </div>
+
+            <div class="col-md-6">
+              <label style="font-weight: bold;margin-bottom: 3px;margin-top: 5px">Start Date :</label>
+              <input type="date" class="form-control" #edStDate="ngModel" name="start_date"
+                     placeholder="Enter Start Date"
+                     [(ngModel)]="education.start_date" required="required">
+              <span style="color: red;font-weight: bold;font-size: 13px"
+                    *ngIf="edStDate.invalid && edStDate.touched && educationList.length == 0">Enter Valid Start Date</span>
+            </div>
+            <div class="col-md-6">
+              <label style="font-weight: bold;margin-bottom: 3px;margin-top: 5px">End Date :</label>
+              <input type="date" class="form-control" #edEndDate="ngModel" name="end_date"
+                     placeholder="Enter End Date"
+                     [(ngModel)]="education.end_date" required="required" minlength="3" maxlength="200">
+              <span style="color: red;font-weight: bold;font-size: 13px"
+                    *ngIf="edEndDate.invalid && edEndDate.touched && educationList.length == 0">Enter Valid End Date</span>
+            </div>
+          </div>
+        </div>
+      </form>
+      <br>
+      <table class="table table-striped table-bordered">
+        <thead class="thead-dark">
+        <tr>
+          <th scope="col">Course</th>
+          <th scope="col">Institute</th>
+          <th scope="col">Start Date</th>
+          <th scope="col">End Date</th>
+          <th scope="col"></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let data of educationList">
+          <th scope="row">{{data.course_name}}</th>
+          <td>{{data.institute}}</td>
+          <td>{{data.start_date | date : "YYYY-MM-dd"}}</td>
+          <td>{{data.end_date | date : "YYYY-MM-dd"}}</td>
+          <td>
+            <button class="btn btn-danger" (click)="deleteEducationalData(data.id)">Delete</button>
+            <button class="btn btn-success mx-2" (click)="editEducationalData(data)">Edit</button>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
