@@ -14,13 +14,15 @@ import { EducationComponent } from './View/education/education.component';
 import {FormsModule} from "@angular/forms";
 import {NgxSpinnerModule} from "ngx-spinner";
 import { ExperienceComponent } from './View/experience/experience.component';
+import { SkillsComponent } from './View/skills/skills.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     PersonalDtailsComponent,
     EducationComponent,
-    ExperienceComponent
+    ExperienceComponent,
+    SkillsComponent
   ],
   imports: [
     BrowserModule,
