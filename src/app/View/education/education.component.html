@@ -72,8 +72,8 @@
           <td>{{data.start_date | date : "YYYY-MM-dd"}}</td>
           <td>{{data.end_date | date : "YYYY-MM-dd"}}</td>
           <td>
-            <button class="btn btn-danger" (click)="deleteEducationalData(data.id)">Delete</button>
             <button class="btn btn-success mx-2" (click)="editEducationalData(data)">Edit</button>
+            <button class="btn btn-danger" (click)="deleteEducationalData(data.id)">Delete</button>
           </td>
         </tr>
         </tbody>

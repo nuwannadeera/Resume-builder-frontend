@@ -1,0 +1,90 @@
+<div class="container">
+  <ngx-spinner type="ball-scale-multiple"></ngx-spinner>
+  <div class="card bg-light mb-3">
+    <div class="card-header">
+      <div class="row">
+        <div class="col-sm-1" style="margin-top: 5px;">
+          <mat-icon>library_books</mat-icon>
+        </div>
+        <div class="col-md-10">
+          <h2 style="text-align: left;margin-left: -65px;margin-bottom: 0px">Experience</h2>
+        </div>
+        <div class="col-md-1">
+          <button class="btn btn-primary" (click)="addToExperienceTable()">Add</button>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <form #experienceForm="ngForm">
+        <div class="form-group">
+          <div class="row">
+            <div class="col-md-6">
+              <label style="font-weight: bold;margin-bottom: 3px;margin-top: 5px">Position :</label>
+              <input type="text" pattern="[a-zA-Z.0-9]+$" class="form-control" #exPosition="ngModel" name="position"
+                     placeholder="Enter Position"
+                     [(ngModel)]="experience.position" required="required" minlength="3" maxlength="200">
+              <span style="color: red;font-weight: bold;font-size: 13px"
+                    *ngIf="exPosition.invalid && exPosition.touched && experienceList.length == 0">Enter Position</span>
+            </div>
+            <div class="col-md-6">
+              <label style="font-weight: bold;margin-bottom: 3px;margin-top: 5px">Company :</label>
+              <input type="text" class="form-control" pattern="[a-zA-Z0-9@.]+$" #exCompany="ngModel" name="company"
+                     placeholder="Enter Company"
+                     [(ngModel)]="experience.company" required="required" minlength="3" maxlength="200">
+              <span style="color: red;font-weight: bold;font-size: 13px"
+                    *ngIf="exCompany.invalid && exCompany.touched && experienceList.length == 0">Enter Company</span>
+            </div>
+
+            <div class="col-md-6">
+              <label style="font-weight: bold;margin-bottom: 3px;margin-top: 5px">Start Date :</label>
+              <input type="date" class="form-control" #exStDate="ngModel" name="start_date"
+                     placeholder="Enter Start Date"
+                     [(ngModel)]="experience.start_date" required="required">
+              <span style="color: red;font-weight: bold;font-size: 13px"
+                    *ngIf="exStDate.invalid && exStDate.touched && experienceList.length == 0">Enter Start Date</span>
+            </div>
+            <div class="col-md-6">
+              <label style="font-weight: bold;margin-bottom: 3px;margin-top: 5px">End Date :</label>
+              <input type="date" class="form-control" #exEndDate="ngModel" name="end_date"
+                     placeholder="Enter End Date"
+                     [(ngModel)]="experience.end_date" minlength="3" maxlength="200">
+            </div>
+            <div class="col-md-12">
+              <label style="font-weight: bold;margin-bottom: 3px;margin-top: 5px">Description :</label>
+              <input type="text" class="form-control" #exDesc="ngModel" name="description"
+                     placeholder="Enter Description"
+                     [(ngModel)]="experience.description" minlength="3" maxlength="200">
+            </div>
+          </div>
+        </div>
+      </form>
+      <br>
+      <table class="table table-striped table-bordered">
+        <thead class="thead-dark">
+        <tr>
+          <th scope="col">Position</th>
+          <th scope="col">Company</th>
+          <th scope="col">Start Date</th>
+          <th scope="col">End Date</th>
+          <th scope="col">Description</th>
+          <th scope="col"></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let data of experienceList">
+          <th scope="row">{{data.position}}</th>
+          <td>{{data.company}}</td>
+          <td>{{data.start_date | date : "YYYY-MM-dd"}}</td>
+          <td>{{data.end_date | date : "YYYY-MM-dd"}}</td>
+          <td>{{data.description}}</td>
+          <td>
+            <button class="btn btn-success mx-2" (click)="editExperienceData(data)">Edit</button>
+            <button class="btn btn-danger" (click)="deleteExperienceData(data.id)">Delete</button>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+

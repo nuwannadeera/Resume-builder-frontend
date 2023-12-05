@@ -13,12 +13,14 @@ import {MatCardModule} from "@angular/material/card";
 import { EducationComponent } from './View/education/education.component';
 import {FormsModule} from "@angular/forms";
 import {NgxSpinnerModule} from "ngx-spinner";
+import { ExperienceComponent } from './View/experience/experience.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     PersonalDtailsComponent,
-    EducationComponent
+    EducationComponent,
+    ExperienceComponent
   ],
   imports: [
     BrowserModule,

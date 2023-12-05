@@ -17,9 +17,9 @@ export class EducationComponent implements OnInit {
    *
    */
   education: Education = new Education(); // Initialize an instance of Education class
-  educationList: Array<Education> = []; // Declare a variable to store a list of education items
+  educationList: Array<Education> = []; // Declare a variable to store a list of education
   check: boolean = true; // A flag to check validation status
-  currentIndex: number = 1; // An index to track the current item
+  currentIndex: number = 1; // An index to track the current index
 
   constructor(
     private toastr: ToastrService, //add service for notification popup
@@ -52,7 +52,6 @@ export class EducationComponent implements OnInit {
   //clear Function
   clear() {
     this.education = new Education();
-
   }
 
   // Function to add education fields to the list
@@ -95,6 +94,7 @@ export class EducationComponent implements OnInit {
       }
     }
     this.educationList.splice(new_id, 1);
+    this.toastr.success('Deleted Successfully');
     console.log(this.educationList);
   };
 
