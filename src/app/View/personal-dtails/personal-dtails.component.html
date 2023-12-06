@@ -26,7 +26,7 @@
             </div>
             <div class="col-md-6">
               <label style="font-weight: bold;margin-bottom: 3px;margin-top: 5px">Post :</label>
-              <input type="text" class="form-control" pattern="[a-zA-Z0-9@.]+$" #stPost="ngModel" name="post"
+              <input type="text" class="form-control" pattern="[a-zA-Z0-9@. ]+$" #stPost="ngModel" name="post"
                      placeholder="Enter Post" (blur)="addUserData()"
                      [(ngModel)]="user.post" required="required" minlength="3" maxlength="200">
               <span style="color: red;font-weight: bold;font-size: 13px" *ngIf="stPost.invalid && stPost.touched">Please Enter Post</span>
@@ -34,14 +34,14 @@
 
             <div class="col-md-6">
               <label style="font-weight: bold;margin-bottom: 3px;margin-top: 5px">Name :</label>
-              <input type="text" pattern="[a-zA-Z]+$" class="form-control" #stName="ngModel" name="name"
+              <input type="text" pattern="[a-zA-Z ]+$" class="form-control" #stName="ngModel" name="name"
                      placeholder="Enter Name" (blur)="addUserData()"
                      [(ngModel)]="user.name" required="required" minlength="3" maxlength="200">
               <span style="color: red;font-weight: bold;font-size: 13px" *ngIf="stName.invalid && stName.touched">Please Enter Valid Name</span>
             </div>
             <div class="col-md-6">
               <label style="font-weight: bold;margin-bottom: 3px;margin-top: 5px">E-mail :</label>
-              <input type="email" class="form-control" pattern="[a-zA-Z0-9@.]+$" #stEmail="ngModel" name="email"
+              <input type="email" class="form-control" pattern="[a-zA-Z0-9@. ]+$" #stEmail="ngModel" name="email"
                      placeholder="Enter Email" (blur)="addUserData()"
                      [(ngModel)]="user.email" required="required" minlength="3" maxlength="200">
               <span style="color: red;font-weight: bold;font-size: 13px" *ngIf="stEmail.invalid && stEmail.touched">Please Enter Valid Email</span>

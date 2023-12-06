@@ -20,7 +20,7 @@
           <div class="row">
             <div class="col-md-6">
               <label style="font-weight: bold;margin-bottom: 3px;margin-top: 5px">Position :</label>
-              <input type="text" pattern="[a-zA-Z.0-9]+$" class="form-control" #exPosition="ngModel" name="position"
+              <input type="text" pattern="[a-zA-Z.0-9 ]+$" class="form-control" #exPosition="ngModel" name="position"
                      placeholder="Enter Position"
                      [(ngModel)]="experience.position" required="required" minlength="3" maxlength="200">
               <span style="color: red;font-weight: bold;font-size: 13px"
@@ -28,7 +28,7 @@
             </div>
             <div class="col-md-6">
               <label style="font-weight: bold;margin-bottom: 3px;margin-top: 5px">Company :</label>
-              <input type="text" class="form-control" pattern="[a-zA-Z0-9@.]+$" #exCompany="ngModel" name="company"
+              <input type="text" class="form-control" pattern="[a-zA-Z0-9@. ]+$" #exCompany="ngModel" name="company"
                      placeholder="Enter Company"
                      [(ngModel)]="experience.company" required="required" minlength="3" maxlength="200">
               <span style="color: red;font-weight: bold;font-size: 13px"

@@ -15,6 +15,8 @@ import {FormsModule} from "@angular/forms";
 import {NgxSpinnerModule} from "ngx-spinner";
 import { ExperienceComponent } from './View/experience/experience.component';
 import { SkillsComponent } from './View/skills/skills.component';
+import {ResumeService} from "./Service/resume.service";
+import {HttpClientModule} from "@angular/common/http";
 
 @NgModule({
   declarations: [
@@ -34,9 +36,11 @@ import { SkillsComponent } from './View/skills/skills.component';
     MatIconModule,
     MatCardModule,
     ToastrModule.forRoot(),
-    NgxSpinnerModule
+    NgxSpinnerModule,
+    HttpClientModule
   ],
   providers: [
+    ResumeService
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   bootstrap: [AppComponent]

@@ -20,7 +20,7 @@
           <div class="row">
             <div class="col-md-6">
               <label style="font-weight: bold;margin-bottom: 3px;margin-top: 5px">Skill :</label>
-              <input type="text" pattern="[a-zA-Z@.0-9]+$" class="form-control" #skSkill="ngModel" name="skill"
+              <input type="text" pattern="[a-zA-Z@.0-9 ]+$" class="form-control" #skSkill="ngModel" name="skill"
                      placeholder="Enter Skill"
                      [(ngModel)]="skills.skill" required="required" minlength="3" maxlength="200">
               <span style="color: red;font-weight: bold;font-size: 13px"
