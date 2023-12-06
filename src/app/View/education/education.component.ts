@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, EventEmitter, Output} from '@angular/core';
 import {Education} from "../../Models/education";
 import {ToastrService} from "ngx-toastr";
 import {NgxSpinnerService} from "ngx-spinner";
@@ -20,6 +20,7 @@ export class EducationComponent implements OnInit {
   educationList: Array<Education> = []; // Declare a variable to store a list of education
   check: boolean = true; // A flag to check validation status
   currentIndex: number = 1; // An index to track the current index
+  @Output() dataEmitter = new EventEmitter<Education[]>();
 
   constructor(
     private toastr: ToastrService, //add service for notification popup
@@ -61,6 +62,7 @@ export class EducationComponent implements OnInit {
       this.education.id = this.currentIndex++;
       console.log(this.education);
       this.educationList.unshift(this.education);
+      this.dataEmitter.emit(this.educationList);
       console.log(this.educationList);
       this.clear();
       this.toastr.success('Added Successfully');

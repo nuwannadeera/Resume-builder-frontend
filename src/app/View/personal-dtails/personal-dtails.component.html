@@ -16,7 +16,8 @@
           <div class="row">
             <div class="col-md-6">
               <label style="font-weight: bold;margin-bottom: 3px;margin-top: 5px">Title :</label>
-              <select class="form-select" aria-label="Default select example" name="title" required>
+              <select class="form-select" aria-label="Default select example" name="title" required
+                      (change)="addUserData()" [(ngModel)]="user.title">
                 <option selected></option>
                 <option value="mr">Mr.</option>
                 <option value="mrs">Mrs.</option>
@@ -26,22 +27,22 @@
             <div class="col-md-6">
               <label style="font-weight: bold;margin-bottom: 3px;margin-top: 5px">Post :</label>
               <input type="text" class="form-control" pattern="[a-zA-Z0-9@.]+$" #stPost="ngModel" name="post"
-                     placeholder="Enter Post"
-                     [(ngModel)]="user.email" required="required" minlength="3" maxlength="200">
+                     placeholder="Enter Post" (blur)="addUserData()"
+                     [(ngModel)]="user.post" required="required" minlength="3" maxlength="200">
               <span style="color: red;font-weight: bold;font-size: 13px" *ngIf="stPost.invalid && stPost.touched">Please Enter Post</span>
             </div>
 
             <div class="col-md-6">
               <label style="font-weight: bold;margin-bottom: 3px;margin-top: 5px">Name :</label>
               <input type="text" pattern="[a-zA-Z]+$" class="form-control" #stName="ngModel" name="name"
-                     placeholder="Enter Name"
+                     placeholder="Enter Name" (blur)="addUserData()"
                      [(ngModel)]="user.name" required="required" minlength="3" maxlength="200">
               <span style="color: red;font-weight: bold;font-size: 13px" *ngIf="stName.invalid && stName.touched">Please Enter Valid Name</span>
             </div>
             <div class="col-md-6">
               <label style="font-weight: bold;margin-bottom: 3px;margin-top: 5px">E-mail :</label>
               <input type="email" class="form-control" pattern="[a-zA-Z0-9@.]+$" #stEmail="ngModel" name="email"
-                     placeholder="Enter Email"
+                     placeholder="Enter Email" (blur)="addUserData()"
                      [(ngModel)]="user.email" required="required" minlength="3" maxlength="200">
               <span style="color: red;font-weight: bold;font-size: 13px" *ngIf="stEmail.invalid && stEmail.touched">Please Enter Valid Email</span>
             </div>
@@ -49,14 +50,14 @@
             <div class="col-md-6">
               <label style="font-weight: bold;margin-bottom: 3px;margin-top: 5px">Contact No :</label>
               <input type="text" pattern="[0-9]+$" class="form-control" #stContact="ngModel" name="contact"
-                     placeholder="Enter Contact No"
+                     placeholder="Enter Contact No" (blur)="addUserData()"
                      [(ngModel)]="user.contact_no" required="required" minlength="10" maxlength="12">
               <span style="color: red;font-weight: bold;font-size: 13px" *ngIf="stContact.invalid && stContact.touched">Please Enter Valid Contact</span>
             </div>
             <div class="col-md-6">
               <label style="font-weight: bold;margin-bottom: 3px;margin-top: 5px">Date of Birth :</label>
               <input type="date" class="form-control" #stDob="ngModel" name="dob" placeholder="Enter Date"
-                     [(ngModel)]="user.date_of_birth" required="required">
+                     [(ngModel)]="user.date_of_birth" required="required" (blur)="addUserData()">
               <span style="color: red;font-weight: bold;font-size: 13px"
                     *ngIf="stDob.invalid && stContact.touched">Please Enter Valid Date</span>
             </div>
@@ -64,14 +65,14 @@
             <div class="col-md-6">
               <label style="font-weight: bold;margin-bottom: 3px;margin-top: 5px">Address :</label>
               <input type="text" pattern="[a-zA-Z0-9. ]+$" class="form-control" #stAddress="ngModel" name="address"
-                     placeholder="Enter Name"
+                     placeholder="Enter Name" (blur)="addUserData()"
                      [(ngModel)]="user.address" required="required" minlength="3" maxlength="500">
               <span style="color: red;font-weight: bold;font-size: 13px" *ngIf="stAddress.invalid && stAddress.touched">Please Enter Valid Address</span>
             </div>
             <div class="col-md-6">
               <label style="font-weight: bold;margin-bottom: 3px;margin-top: 5px">Linkedin Profile :</label>
               <input type="text" class="form-control" pattern="[a-zA-Z0-9@.]+$" #stLinkedin="ngModel" name="linkedin"
-                     placeholder="Enter Profile Link"
+                     placeholder="Enter Profile Link" (blur)="addUserData()"
                      [(ngModel)]="user.linkedin_profile" minlength="3" maxlength="500">
             </div>
           </div>
@@ -80,4 +81,10 @@
     </div>
   </div>
 </div>
+
+
+
+
+
+
 

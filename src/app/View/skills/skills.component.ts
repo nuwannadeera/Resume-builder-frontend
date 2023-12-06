@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {Education} from "../../Models/education";
 import {Skills} from "../../Models/skills";
 import {ToastrService} from "ngx-toastr";
@@ -16,11 +16,13 @@ export class SkillsComponent implements OnInit {
   skillList: Array<Skills> = [];
   check: boolean = true;
   currentIndex: number = 1;
+  @Output() dataEmitter = new EventEmitter<Skills[]>();
 
   constructor(
     private toastr: ToastrService, //add service for notification popup
     private spinner: NgxSpinnerService  //add service for loader
-  ) { }
+  ) {
+  }
 
   // Validation function to check if all required fields are filled
   validation() {
@@ -44,6 +46,7 @@ export class SkillsComponent implements OnInit {
       this.skills.id = this.currentIndex++;
       console.log(this.skills);
       this.skillList.unshift(this.skills);
+      this.dataEmitter.emit(this.skillList); //called when the child component emits the data
       console.log(this.skillList);
       this.clear();
       this.toastr.success('Added Successfully');
