@@ -47,7 +47,7 @@ export class SkillsComponent implements OnInit {
       console.log(this.skills);
       this.skillList.unshift(this.skills);
       this.dataEmitter.emit(this.skillList); //called when the child component emits the data
-      console.log(this.skillList);
+      // console.log(this.skillList);
       this.clear();
       this.toastr.success('Added Successfully');
       this.spinner.hide();

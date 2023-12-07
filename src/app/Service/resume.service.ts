@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import {Saving_data} from "../Models/saving_data";
 import {HttpClient} from "@angular/common/http";
 import {environment} from "../../environments/environment";
 
@@ -12,7 +11,9 @@ export class ResumeService {
 
   constructor(private http: HttpClient) { }
 
-  saveResume(saving_data: Saving_data) {
-    return this.http.post(this.apiUrl + '/saveResumeData', saving_data);
+  saveResume(saving_data: any) {
+    console.log('service----');
+    console.log(saving_data);
+    return this.http.post(this.apiUrl + '/save_resume.php', saving_data);
   }
 }

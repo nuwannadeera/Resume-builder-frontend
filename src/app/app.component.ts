@@ -24,6 +24,7 @@ export class AppComponent {
   user: User = new User(); // Initialize an instance of User class
   saving_data: Saving_data = new Saving_data();  // Initialize an instance of User class
   check: boolean = true;
+  user_inedx: any;
 
   constructor(
     private toastr: ToastrService, //add service for notification popup
@@ -32,6 +33,7 @@ export class AppComponent {
   ) {
   }
 
+  // add validation for save resume
   validation() {
     this.check = true;
     if (!this.user.title) {
@@ -85,28 +87,28 @@ export class AppComponent {
   receiveEducationData(educationList: Education[]) {
     this.saving_data.eduList = [];
     this.educationList = educationList;
-    this.saving_data.eduList = this.educationList;
+    this.saving_data.eduList = educationList;
   }
 
   // get data from experience component
   receiveExperienceData(experienceList: Experience[]) {
     this.saving_data.expList = [];
     this.experienceList = experienceList;
-    this.saving_data.expList = this.experienceList;
+    this.saving_data.expList = experienceList;
   }
 
   // get data from skill component
   receiveSkillData(skillList: Skills[]) {
     this.saving_data.skillList = [];
     this.skillList = skillList;
-    this.saving_data.skillList = this.skillList;
+    this.saving_data.skillList = skillList;
   }
 
   // get data from personal data component
   receivePersonalData(user: User) {
-    this.saving_data.user = new User();
+    this.saving_data.user = {};
     this.user = user;
-    this.saving_data.user = this.user;
+    this.saving_data.user = user;
   }
 
 //save resume data
@@ -114,8 +116,9 @@ export class AppComponent {
     if (this.validation()) {
       this.spinner.show();
       this.resumeService.saveResume(this.saving_data)
-        .subscribe(res=>{
-          console.log('last......---');
+        .subscribe(res => {
+          this.user_inedx = res;
+          console.log('saving data');
           console.log(this.saving_data);
           this.spinner.hide();
         });

@@ -63,7 +63,7 @@ export class EducationComponent implements OnInit {
       console.log(this.education);
       this.educationList.unshift(this.education);
       this.dataEmitter.emit(this.educationList);
-      console.log(this.educationList);
+      // console.log(this.educationList);
       this.clear();
       this.toastr.success('Added Successfully');
       this.spinner.hide();

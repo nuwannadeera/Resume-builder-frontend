@@ -59,7 +59,7 @@ export class ExperienceComponent implements OnInit {
       this.experience.id = this.currentIndex++;
       console.log(this.experience);
       this.experienceList.unshift(this.experience);
-      console.log(this.experienceList);
+      // console.log(this.experienceList);
       this.dataEmitter.emit(this.experienceList); //called when the child component emits the data
       this.clear();
       this.toastr.success('Added Successfully');
