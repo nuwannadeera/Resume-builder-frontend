@@ -17,6 +17,7 @@ import { ExperienceComponent } from './View/experience/experience.component';
 import { SkillsComponent } from './View/skills/skills.component';
 import {ResumeService} from "./Service/resume.service";
 import {HttpClientModule} from "@angular/common/http";
+import { ResumeHeadingsComponent } from './View/resume-headings/resume-headings.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import {HttpClientModule} from "@angular/common/http";
     PersonalDtailsComponent,
     EducationComponent,
     ExperienceComponent,
-    SkillsComponent
+    SkillsComponent,
+    ResumeHeadingsComponent
   ],
   imports: [
     BrowserModule,
