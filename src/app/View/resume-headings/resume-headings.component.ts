@@ -1,4 +1,3 @@
-import { Component, OnInit } from '@angular/core';
 import {Education} from "../../Models/education";
 import {Experience} from "../../Models/experience";
 import {Skills} from "../../Models/skills";
@@ -7,6 +6,8 @@ import {Saving_data} from "../../Models/saving_data";
 import {ToastrService} from "ngx-toastr";
 import {NgxSpinnerService} from "ngx-spinner";
 import {ResumeService} from "../../Service/resume.service";
+import {Router} from "@angular/router";
+import {Component, OnInit} from "@angular/core";
 
 @Component({
   selector: 'app-resume-headings',
@@ -23,11 +24,13 @@ export class ResumeHeadingsComponent implements OnInit {
   saving_data: Saving_data = new Saving_data();  // Initialize an instance of User class
   check: boolean = true;
   user_inedx: any;
+  user_inedx1: any = 1;
 
   constructor(
     private toastr: ToastrService, //add service for notification popup
     private spinner: NgxSpinnerService,  //add service for loader
-    private resumeService: ResumeService //import service file
+    private resumeService: ResumeService, //import service file
+    private router: Router
   ) {
   }
 
@@ -122,6 +125,16 @@ export class ResumeHeadingsComponent implements OnInit {
         });
     }
   }
+
+  redirect() {
+    if (parseInt(this.user_inedx1) > 0) {
+      const encodedData = encodeURIComponent(JSON.stringify(this.saving_data));
+      this.router.navigateByUrl('/viewResume/' + encodedData);
+    } else {
+      this.toastr.error('Add Details First');
+    }
+  }
+
 
   ngOnInit(): void {
   }

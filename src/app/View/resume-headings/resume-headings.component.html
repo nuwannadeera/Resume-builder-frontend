@@ -6,6 +6,7 @@
   </mat-toolbar>
 </p>
 
+
 <!--add personal detail component-->
 <app-personal-dtails (dataEmitter)="receivePersonalData($event)"></app-personal-dtails>
 
@@ -28,7 +29,8 @@
           <button mat-raised-button color="primary" (click)="saveAllData()" routerlink="/viewResume">Save All</button>
         </div>
         <div class="col-sm-1" style="margin-top: 5px;">
-          <button mat-raised-button color="primary" [routerLink] = "'/viewResume'" routerLinkActive="active">View</button>
+          <!--<button mat-raised-button color="primary" [routerLink] = "'/viewResume'" routerLinkActive="active">View</button>-->
+          <button mat-raised-button color="primary" (click)="redirect()">View</button>
         </div>
       </div>
     </div>
