@@ -16,21 +16,25 @@ import {Component, OnInit} from "@angular/core";
 })
 export class ResumeHeadingsComponent implements OnInit {
 
-  //variable declaration
+  /*
+   *
+  Declare variables
+   *
+   *
+   * */
+  check: boolean = true;
+  user_inedx: any = 0;
   educationList: Array<Education> = [];
   experienceList: Array<Experience> = [];
   skillList: Array<Skills> = [];
   user: User = new User(); // Initialize an instance of User class
   saving_data: Saving_data = new Saving_data();  // Initialize an instance of User class
-  check: boolean = true;
-  user_inedx: any;
-  user_inedx1: any = 1;
 
   constructor(
     private toastr: ToastrService, //add service for notification popup
     private spinner: NgxSpinnerService,  //add service for loader
     private resumeService: ResumeService, //import service file
-    private router: Router
+    private router: Router // import router service to redirect
   ) {
   }
 
@@ -119,20 +123,26 @@ export class ResumeHeadingsComponent implements OnInit {
       this.resumeService.saveResume(this.saving_data)
         .subscribe(res => {
           this.user_inedx = res;
-          console.log('saving data');
-          console.log(this.saving_data);
-          this.spinner.hide();
+          if (parseInt(this.user_inedx) > 0) {
+            this.toastr.success('Data Saved Successfully!');
+            this.redirect();
+            console.log('saving data');
+            console.log(this.saving_data);
+            this.spinner.hide();
+          } else {
+            //if error occurs show notification
+            this.toastr.error('Add Details First');
+            this.spinner.hide();
+          }
         });
     }
   }
 
   redirect() {
-    if (parseInt(this.user_inedx1) > 0) {
-      const encodedData = encodeURIComponent(JSON.stringify(this.saving_data));
-      this.router.navigateByUrl('/viewResume/' + encodedData);
-    } else {
-      this.toastr.error('Add Details First');
-    }
+    // Encode the data
+    // const encodedData = encodeURIComponent(JSON.stringify(this.saving_data));
+    // Navigate to the 'viewResume' route with the encoded data
+    this.router.navigateByUrl('/viewResume/' + this.user_inedx);
   }
 
 

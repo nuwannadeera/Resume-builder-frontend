@@ -1,3 +1,146 @@
-<div cdkDropList class="example-list" (cdkDropListDropped)="drop($event)">
-  <div class="example-box" *ngFor="let movie of movies" cdkDrag>{{movie}}</div>
-</div>
+<header class="container bg-dark bg-gradient text-white py-3">
+  <ngx-spinner type="ball-scale-multiple"></ngx-spinner>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-9">
+        <h1 style="font-size: 40px;font-weight: bold">{{personalDataList[0].full_name}}</h1>
+        <h3>{{personalDataList[0].post}}</h3>
+      </div>
+    </div>
+  </div>
+</header>
+<nav class="container bg-dark text-white-50 mb-5" style="margin-top: 3px">
+  <div class="container">
+    <div class="row p-3">
+      <div class="col-md-6 text-md-center">
+        <i class="fa fa-envelope fa-lg" aria-hidden="true" style="margin-right: 8px"></i>
+        <a href="#" class="text-white ml-2" style="text-decoration: none;">{{personalDataList[0].email}}</a>
+      </div>
+      <div class="col-md-6 text-md-center">
+        <i class="fa fa-user fa-lg" aria-hidden="true" style="margin-right: 8px"></i>
+        <a href="https://{{personalDataList[0].linkedin_profile}}" class="text-white ml-2"
+           style="text-decoration: none;">{{personalDataList[0].linkedin_profile}}</a>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<main class="container">
+  <div cdkDropList (cdkDropListDropped)="drop($event)">
+    <div class="card bg-light mb-3" style="border: none" *ngFor="let heading of cvCategory" cdkDrag>
+
+      <!--common heading-->
+      <div class="card-header">
+        <div class="row">
+          <div class="col-md-12">
+            <h2>{{heading}}</h2>
+          </div>
+        </div>
+      </div>
+      <div class="card-body">
+
+        <!--personal detail component-->
+        <div class="row" *ngIf="heading == 'Personal Details'">
+          <div class="col-md-4">
+            <label style="font-weight: bold;margin-bottom: 3px;margin-top: 5px">
+              <i class="fa fa-home" aria-hidden="true" style="margin-right: 3px"></i>
+              Address :
+            </label>
+            <label style="margin-left: 5px;">{{personalDataList[0].address}}</label>
+          </div>
+          <div class="col-md-4">
+            <label style="font-weight: bold;margin-bottom: 3px;margin-top: 5px">
+              <i class="fa fa-birthday-cake" aria-hidden="true" style="margin-right: 3px"></i>
+              Date of Birth :
+            </label>
+            <label style="margin-left: 5px;">{{personalDataList[0].birth_date}}</label>
+          </div>
+          <div class="col-md-4">
+            <label style="font-weight: bold;margin-bottom: 3px;margin-top: 5px">
+              <i class="fa fa-phone" aria-hidden="true" style="margin-right: 3px"></i>
+              Contact No :
+            </label>
+            <label style="margin-left: 5px;">{{personalDataList[0].mobile_no}}</label>
+          </div>
+        </div>
+
+
+        <!--education component-->
+        <div class="row" *ngIf="heading == 'Education'">
+          <div class="col-lg-4" *ngFor="let data of educationList">
+            <div class="card card-margin">
+              <br>
+              <div class="card-body pt-0">
+                <div class="widget-49">
+                  <div class="widget-49-title-wrapper">
+                    <div class="widget-49-date-primary">
+                      <span class="widget-49-date-day">
+                        <mat-icon class="mat-icon-rtl-mirror">book</mat-icon>
+                      </span>
+                    </div>
+                    <div class="widget-49-meeting-info">
+                      <span class="widget-49-pro-title" style="font-weight: bold">{{data.course_name}}</span>
+                      <span class="widget-49-meeting-time">{{data.institute}}</span>
+                    </div>
+                  </div>
+                  <div class="row" style="margin-top: 5px">
+                    <div class="col-md-6"><span style="font-weight: bold">From    : </span>{{data.start_date}}</div>
+                    <div class="col-md-6"><span style="font-weight: bold">To    : </span>{{data.end_date}}</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+        <!--experience component-->
+        <div class="row" *ngIf="heading == 'Experience'">
+          <div class="col-lg-4" *ngFor="let data2 of experienceList">
+            <div class="card card-margin">
+              <br>
+              <div class="card-body pt-0">
+                <div class="widget-49">
+                  <div class="widget-49-title-wrapper">
+                    <div class="widget-49-date-primary">
+                      <span class="widget-49-date-day">
+                        <mat-icon class="mat-icon-rtl-mirror">library_books</mat-icon>
+                      </span>
+                    </div>
+                    <div class="widget-49-meeting-info">
+                      <span class="widget-49-pro-title" style="font-weight: bold">{{data2.position}}</span>
+                      <span class="widget-49-meeting-time">{{data2.company}}</span>
+                    </div>
+                  </div>
+                  <div class="row" style="margin-top: 5px">
+                    <div class="col-md-6"><span style="font-weight: bold">From    : </span>{{data2.start_date}}</div>
+                    <div class="col-md-6"><span style="font-weight: bold">To    : </span>{{data2.end_date}}</div>
+                  </div>
+                  <hr>
+                  <div class="widget-49-meeting-action">
+                    <p>{{data2.description}}</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+        <!--skill component-->
+        <div class="row" *ngIf="heading == 'Skills'">
+          <div class="col-lg-4" *ngFor="let data3 of skillsList">
+            <div class="card card-margin">
+              <br>
+              <div class="card-header no-border">
+              <h5 class="card-title">{{data3.skill}}</h5>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+      </div>
+    </div>
+  </div>
+</main>

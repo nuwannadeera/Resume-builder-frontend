@@ -44,6 +44,14 @@ export class ExperienceComponent implements OnInit {
       this.check = false;
       this.toastr.error('Add Start Date!');
     }
+    if (!this.experience.end_date) {
+      this.check = false;
+      this.toastr.error('Add End Date!');
+    }
+    if (!this.experience.description) {
+      this.check = false;
+      this.toastr.error('Add Description!');
+    }
     return this.check;
   }
 

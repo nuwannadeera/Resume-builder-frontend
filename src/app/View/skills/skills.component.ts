@@ -11,7 +11,12 @@ import {NgxSpinnerService} from "ngx-spinner";
 })
 export class SkillsComponent implements OnInit {
 
-  //variable declaration
+  /*
+   *
+  Declare variables
+   *
+   *
+   * */
   skills: Skills = new Skills();
   skillList: Array<Skills> = [];
   check: boolean = true;
